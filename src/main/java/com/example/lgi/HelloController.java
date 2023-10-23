@@ -63,24 +63,29 @@ public class HelloController {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "select count(1) from UserAccounts where username = ? and Password = ? ";
-        try {
-            PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
-            preparedStatement.setString(1, usernameTextField.getText());
-            preparedStatement.setString(2, passwordField.getText());
+        if (connectDB != null) {
+            String verifyLogin = "select count(1) from UserAccounts where username = ? and Password = ? ";
+            try {
+                PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
+                preparedStatement.setString(1, usernameTextField.getText());
+                preparedStatement.setString(2, passwordField.getText());
 
-            ResultSet queryResult = preparedStatement.executeQuery();
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    LoginMessageLabel2.setText("Welcome!!!");
-                } else {
-                    LoginMessageLabel.setText("Invalid Login, Please try again.");
+                ResultSet queryResult = preparedStatement.executeQuery();
+                while (queryResult.next()) {
+                    if (queryResult.getInt(1) == 1) {
+                        LoginMessageLabel2.setText("Welcome!!!");
+                    } else {
+                        LoginMessageLabel.setText("Invalid Login, Please try again.");
+                    }
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            LoginMessageLabel.setText("Database connection failed.");
         }
     }
 
 }
+
 
