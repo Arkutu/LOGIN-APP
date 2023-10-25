@@ -7,7 +7,7 @@ public class DatabaseConnection {
     public Connection databaseLink;
 
     public Connection getConnection() {
-        String databasePath = "/home/arkutu/Downloads/UserAccounts.db"; // Replace with your database file path
+        String databasePath = "/home/arkutu/Downloads/UsersAccounts.db"; // Replace with your database file path
         String url = "jdbc:sqlite:" + databasePath;
 
         try {

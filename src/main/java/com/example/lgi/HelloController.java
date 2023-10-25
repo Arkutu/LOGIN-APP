@@ -8,6 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import javafx.scene.control.Hyperlink;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -40,6 +47,13 @@ public class HelloController {
 
     @FXML
     private PasswordField passwordField;
+
+    @FXML
+    private Hyperlink signupLink;
+
+
+
+
 
     public void loginButtonOnAction(ActionEvent e) {
 
@@ -85,6 +99,30 @@ public class HelloController {
             LoginMessageLabel.setText("Database connection failed.");
         }
     }
+      @FXML
+    private void handleSignUpLinkClick(ActionEvent event) {
+        // Load the registration page or open a new stage for it
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root, 529, 742); // Set the desired width and height
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.show();
+
+            // Optionally, you can close the login page if needed
+            // ((Stage) signUpLink.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
 
 }
 

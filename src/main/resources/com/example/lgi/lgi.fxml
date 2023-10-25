@@ -46,7 +46,7 @@
             </Label>
             <Button fx:id="cancelButton" layoutX="148.0" layoutY="366.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="207.0" style="-fx-background-color: #00294F;" text="Cancel" textFill="#f2f2f2" />
             <Label fx:id="LoginMessageLabel" alignment="CENTER" layoutX="83.0" layoutY="81.0" prefHeight="18.0" prefWidth="293.0" textFill="#ff0808c9" />
-            <Hyperlink fx:id="signupLink" layoutX="290.0" layoutY="490.0" text="Sign up" textFill="#386dc3" />
+            <Hyperlink fx:id="signupLink" layoutX="290.0" layoutY="490.0" onAction="#handleSignUpLinkClick" text="Sign up" textFill="#386dc3" />
 
             <Label layoutX="174.0" layoutY="493.0" text="Create an Account?" />
             <Hyperlink fx:id="forgotLink" layoutX="317.0" layoutY="248.0" text=" Forgot password?" textFill="#346bc9" />
