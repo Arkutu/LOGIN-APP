@@ -78,7 +78,7 @@ public class HelloController {
         Connection connectDB = connectNow.getConnection();
 
         if (connectDB != null) {
-            String verifyLogin = "select count(1) from UserAccounts where username = ? and Password = ? ";
+            String verifyLogin = "select count(1) from UsersAccounts where username = ? and Password = ? ";
             try {
                 PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
                 preparedStatement.setString(1, usernameTextField.getText());
